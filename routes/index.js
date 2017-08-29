@@ -6,7 +6,7 @@ router.get('/', function (req, res, next) {
   console.log('Index render');
   const baseUrl = req.baseUrl;
   const search = req.url;
-  console.log(req.baseUrl, req.url);
+
   res.render('index');
 });
 /** serve jade enabled partials */
