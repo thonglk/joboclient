@@ -20,7 +20,7 @@ const corsOptions = {
 }
 
 const opts = {
-  namespace: 's',
+  namespace: '_wildcard_',
   whitelist: ['www', 'blog'],
 };
 
@@ -47,11 +47,11 @@ app.use(prerender.set('prerenderServiceUrl', prerenderServiceUrl ));
 app.get('/templates/:name', routes.templates);
 app.get('/employer/:name', routes.employer);
 app.get('/jobseeker/:name', routes.jobseeker);
-app.use('/s/*/', (req, res, next) => {
-  res.send("Tada!");
+app.use('/_wildcard_/*/', (req, res, next) => {
+  const storeId = req.baseUrl.replace(/(\/)|(_wildcard_)/g, '');
+  res.redirect(`/view/store/${storeId}?job=server`);
 });
 app.use('*', routes.index);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
