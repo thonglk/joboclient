@@ -1,0 +1,113 @@
+<!-- Navbar -->
+<div ng-init="init()">
+
+    <header class="app-header navbar">
+        <button class="navbar-toggler hidden-lg-up" type="button" onclick="openNav()">&#9776;</button>
+        <a class="navbar-brand" ui-sref="app.dash"></a>
+        <!--<ul class="nav navbar-nav hidden-md-down b-r-1">
+            <li class="nav-item">
+                <a class="nav-link navbar-toggler sidebar-toggler" href="#">&#9776;</a>
+            </li>
+        </ul>-->
+        <ul class="nav navbar-nav ml-auto hidden-md-down">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link nav-pill" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">
+                    <i class="icon-bell"></i><span
+                        class="badge badge-pill badge-danger">5</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" style="width: 400px">
+
+                    <div class="dropdown-header text-center">
+                        <strong>Thông báo</strong>
+                    </div>
+
+                    <div ng-repeat="card in notification">
+                        <a class="dropdown-item avatar" ui-sref="{{card.cta}}" style="width: 100%"> <img
+                                src="{{card.senderPhotourl}}" class="img-avatar">{{card.senderName}} {{card.text}}<span
+                                class="badge  {{card.status == 1 ? 'badge-default' : 'badge-info'}}">{{timeAgo(card.createdAt)}}</span></a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-pill" href="#!/jobseeker/chats/"><i class="icon-bubbles"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-pill" href="#"><i class="icon-briefcase"></i></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link nav-pill avatar" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">
+                    <img src="{{userData.avatar || 'img/macdinh.jpg'}}" class="img-avatar"
+                         alt="admin@bootstrapmaster.com">
+                    <span class="badge badge-pill badge-danger">9</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+
+                    <div class="dropdown-header text-center">
+                        <strong>{{ 'ACCOUNT' | translate }}</strong>
+                    </div>
+
+                    <a class="dropdown-item" ui-sref="profile"><i class="fa fa-bell-o"></i>Cập nhật hồ sơ<span
+                            class="badge badge-info">42</span></a>
+                    <a class="dropdown-item" ui-sref="jobseeker.chat"><i class="fa fa-envelope-o"></i> Tin nhắn<span
+                            class="badge badge-success">42</span></a>
+                    <a class="dropdown-item" ui-sref="jobseeker.setting"><i class="fa fa-tasks"></i> Cài đặt<span
+                            class="badge badge-danger">42</span></a>
+
+
+                    <button class="dropdown-item" ng-click="logout()"><i class="fa fa-lock"></i> {{ 'LOGOUT' |
+                        translate}}
+                    </button>
+                </div>
+            </li>
+        </ul>
+
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#!/jobfast" title="" onclick="closeNav()">Job list</a>
+            <a href="#!/seekerdash" title="" onclick="closeNav()">Khám phá</a>
+            <a href="#!/login" title="" onclick="closeNav()">Đăng nhập</a>
+        </div>
+    </header>
+
+</div>
+
+<div class="app-body" style=" position: relative;
+">
+    <!-- Navigation -->
+    <!--<div ng-include="'views/common/sidebar-nav.html'"></div>-->
+
+    <!-- Main content -->
+    <!--<main>-->
+
+    <!-- Breadcrumb -->
+    <!--<ol class="breadcrumb" breadcrumb>
+        <ncy-breadcrumb></ncy-breadcrumb>
+    </ol>-->
+
+    <ui-view></ui-view>
+    <!-- /.conainer-fluid -->
+    <!--</main>-->
+
+
+</div>
+<div ng-include="'views/common/footer.html'"></div>
+
+
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+
+    /* Set the width of the side navigation to 0 */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.body.style.backgroundColor = "white";
+    }
+</script>
