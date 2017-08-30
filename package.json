@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "heroku": " node./bin/www",
     "start": "NODE_ENV=production NODE_PATH=./public PORT=55123 node ./bin/www",
     "dev": "set NODE_ENV=development && set NODE_PATH=./public && nodemon ./bin/www"
   },
