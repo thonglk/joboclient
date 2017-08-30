@@ -25,7 +25,7 @@ const opts = {
 };
 
 app.use(cors(corsOptions));
-app.use(wildcardSubdomains(opts));
+// app.use(wildcardSubdomains(opts));
 // view engine setup
 app.set('views', path.join(__dirname, 'dist'));
 app.engine('html', require('ejs').renderFile);
