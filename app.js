@@ -20,7 +20,7 @@ const corsOptions = {
 }
 
 const opts = {
-  namespace: '_wildcard_',
+  namespace: '_wildcard_.joboapptest',
   whitelist: ['www', 'blog'],
 };
 
